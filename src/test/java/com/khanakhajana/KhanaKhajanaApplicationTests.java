@@ -1,4 +1,4 @@
-package com.app.khanakhajana;
+package com.khanakhajana;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,6 +9,5 @@ class KhanaKhajanaApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 
 }
