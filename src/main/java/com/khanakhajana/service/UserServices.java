@@ -14,9 +14,9 @@ public interface UserServices {
 
 	public User updateUser(User user)throws UserException;
 
-	public User removeUser(String mobile)throws UserException;
+	public User removeUser(Integer userId)throws UserException;
 
-	public User viewUser(String mobile)throws UserException;
+	public User viewUser(Integer userId)throws UserException;
 
 	public List<User> viewAllUser()throws UserException;
 

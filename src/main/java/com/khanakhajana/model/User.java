@@ -19,6 +19,7 @@ public class User {
 	private String gender;
 	@Column(unique = true)
 	private String mobile;
+	@Column(unique = true)
 	private String email;
 	private UserType type;
 	private String password;
