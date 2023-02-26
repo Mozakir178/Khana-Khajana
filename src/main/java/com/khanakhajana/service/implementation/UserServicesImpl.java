@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -26,9 +27,8 @@ public class UserServicesImpl implements UserServices{
 	public User addUser(User user) {
 
 
-		User existUser = udao.findById(user.getUserId()).orElseThrow(() -> new UserException("No user found"));
-
-		if(existUser != null)
+		Optional<User> checkUser = udao.findById(user.getUserId()) ;
+		if(checkUser.isPresent())
 			throw new UserException("User Already registered");
 		
 		return udao.save(user);
