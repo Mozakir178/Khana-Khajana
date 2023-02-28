@@ -1,0 +1,50 @@
+package com.khanakhajana.controller;
+
+
+import com.khanakhajana.exception.CategoryException;
+import com.khanakhajana.model.Category;
+import com.khanakhajana.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+public class CategoryController {
+	
+	@Autowired
+	private CategoryService cs;
+
+	@PostMapping("/category/{key}")
+
+	public Category addCategory(@RequestBody Category category, @PathVariable("key") String key) throws CategoryException, CategoryException {
+
+
+		return cs.addCategory(category, key);
+	}
+
+	@PutMapping("/category/{key}")
+	public Category updateCategory(@RequestBody Category category, String key) throws CategoryException {
+
+		return cs.updateCategory(category, key);
+	}
+
+	@PutMapping("/removecategory/{key}")
+	public Category removeCategory(@RequestBody Category category, String key) throws CategoryException {
+
+		return cs.removeCategory(category, key);
+	}
+
+	@GetMapping("/category/{key}")
+	public Category viewCategory(@RequestBody Category category, String key) throws CategoryException {
+
+		return cs.viewCategory(category, key);
+	}
+
+	@GetMapping("/categories/{key}")
+	public List<Category> viewAllCategory(String key) throws CategoryException {
+
+		return cs.viewAllCategory(key);
+	}
+
+}

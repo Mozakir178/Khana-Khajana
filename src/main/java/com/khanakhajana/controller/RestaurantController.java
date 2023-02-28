@@ -30,9 +30,9 @@ public class RestaurantController {
 		return rs.removeRestaurant(restaurant, key);
 	}
 
-	@GetMapping("/restaurant/{key}")
-	public Restaurant viewRestaurant(@RequestBody Restaurant restaurant, @PathVariable("key") String key) {
-		return rs.removeRestaurant(restaurant, key);
+	@GetMapping("/restaurant/{restaurant}/{key}")
+	public Restaurant viewRestaurant(@PathVariable("restaurant") Integer restaurant, @PathVariable("key") String key) {
+		return rs.viewRestaurant(restaurant, key);
 	}
 
 	@GetMapping("/restaurantsbylocation/{location}/{key}")

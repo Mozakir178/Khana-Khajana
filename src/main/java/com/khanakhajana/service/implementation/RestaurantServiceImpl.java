@@ -92,21 +92,22 @@ public class RestaurantServiceImpl implements RestaurentService {
 	}
 
 	@Override
-	public Restaurant viewRestaurant(Restaurant restaurant, String key) throws RestaurantException {
+	public Restaurant viewRestaurant(Integer restaurant, String key) throws RestaurantException {
 		CurrentUserSession cus = sdo.findByUuid(key);
 		
 		if(cus==null) {
 			throw new UserException("enter valid key");
 		}
 
-		UserType uType = cus.getType();
+		Restaurant restaurant1 = rdo.findByMobile(cus.getMobile()) ;
+		System.out.println(restaurant1);
 
-		if (uType.name().equals("Restaurant")) {
+		if (restaurant1 != null) {
 
 			if(restaurant==null){
-				throw  new RestaurantException("Please Enter Valid Restaurant");
+				throw  new RestaurantException("Please Enter Valid Restaurant Id");
 			}else{
-				Optional<Restaurant> existingRestaurant =rdo.findById(restaurant.getRestaurantaid());
+				Optional<Restaurant> existingRestaurant =rdo.findById(restaurant);
 				if(existingRestaurant.isPresent()){
 					return existingRestaurant.get();
 				}else{
